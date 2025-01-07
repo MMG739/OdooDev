@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <!-- Vue Formulaire pour les certifications -->
+        <record id="view_hr_certification_form" model="ir.ui.view">
+            <field name="name">hr.certification.form</field>
+            <field name="model">hr.certification</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="date_obtention"/>
+                            <field name="employee_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

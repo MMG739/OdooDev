@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <!-- Menu pour acceder aux score et experiences des employees -->
+        <menuitem
+            id="menu_hr_employee"
+            name="Score et Experience"
+            parent="hr.menu_hr_root"
+            action="action_hr_employee"
+            sequence="10"/>
+
+        <!-- Menu pour accéder aux scores des départements -->
+        <menuitem id="menu_hr_department_score"
+                  name="Department Scores"
+                  parent="hr.menu_hr_root"
+                  action="action_hr_department_score"/>
+                  
+        <!-- Menu pour accéder au tableau de bord -->
+        <menuitem id="hr_dashboard_menu" 
+                  name="Dashboard" 
+                  parent="hr.menu_hr_root"/>
+                  
+        <menuitem id="hr_dashboard_action_menu_departement"
+                  parent="hr_dashboard_menu"
+                  action="action_hr_dashboard_corrected_custom" />
+
+        <menuitem id="hr_dashboard_action_menu_employees"
+                  parent="hr_dashboard_menu"
+                  action="action_hr_dashboard_corrected" />
+
+     
+
+    </data>
+</odoo>

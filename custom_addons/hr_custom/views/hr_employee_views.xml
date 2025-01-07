@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <!-- Vue Liste des employés -->
+        <record id="view_hr_employee_list" model="ir.ui.view">
+            <field name="name">hr.employee.list</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="experience_level"/>
+                    <field name="performance_score"/>
+                    <field name="certifications" widget="many2many_tags"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vue Formulaire des employés -->
+        <record id="view_hr_employee_form_custom" model="ir.ui.view">
+            <field name="name">hr.employee.form.custom</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <header>
+                    <button name="action_export_employee_report" type="object" class="btn-primary" string="Print Rapport"/>
+                </header>
+                <xpath expr="//sheet" position="inside">
+                    <group string="Informations personnalisées">
+                        <field name="experience_level"/>
+                        <field name="certifications" widget="many2many_tags"/>
+                        <field name="performance_score"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Action pour afficher les employés -->
+        <record id="action_hr_employee" model="ir.actions.act_window">
+            <field name="name">Employés</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">list,form</field> 
+            <field name="view_id" ref="view_hr_employee_list"/> 
+        </record>
+    </data>
+</odoo>

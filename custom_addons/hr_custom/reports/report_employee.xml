@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="employee_report_pdf" model="ir.actions.report">
+            <field name="name">Employee Report</field>
+            <field name="model">hr.employee</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hr_custom.employee_report_template</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        
+        <!-- Graphique en barres : Répartition des employés par niveau d’expérience -->
+        <record id="view_hr_dashboard_bar_chart" model="ir.ui.view">
+            <field name="name">hr.dashboard.bar.chart</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <graph string="Employees by Experience Level" type="bar">
+                    <field name="experience_level"/>
+                    <field name="id" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        
+        <!-- Liste des employés ayant le score de performance le plus bas -->
+        <record id="view_hr_dashboard_low_performance" model="ir.ui.view">
+            <field name="name">hr.dashboard.low.performance</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <list string="Employees with Lowest Performance Scores">
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="performance_score"/>
+                </list>
+            </field>
+        </record>
+
+       <!-- Action principale pour afficher le tableau de bord -->
+        <record id="action_hr_dashboard_corrected" model="ir.actions.act_window">
+            <field name="name">Experience et Score</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">graph,list</field> 
+            <field name="view_id" ref="view_hr_dashboard_bar_chart"/> 
+        </record>
+
+        <!-- Action pour la vue graphique en barres -->
+        <record id="action_hr_dashboard_bar_chart" model="ir.actions.act_window.view">
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_hr_dashboard_bar_chart"/>
+            <field name="act_window_id" ref="action_hr_dashboard_corrected"/>
+        </record>
+
+        <!-- Action pour la vue liste des employés -->
+        <record id="action_hr_dashboard_low_performance" model="ir.actions.act_window.view">
+            <field name="sequence" eval="30"/>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="view_hr_dashboard_low_performance"/>
+            <field name="act_window_id" ref="action_hr_dashboard_corrected"/>
+        </record>
+        
+    </data>
+</odoo>

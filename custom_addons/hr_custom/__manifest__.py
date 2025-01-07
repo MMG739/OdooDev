@@ -1,0 +1,20 @@
+{
+    'name': 'HR Custom',
+    'author': 'mmgdev',
+    'version': '1.0',
+    'category': 'Human Resources',
+    'depends': ['hr'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/hr_employee_views.xml',
+        'views/hr_certification_views.xml',
+        'views/hr_departement_score_views.xml',
+        'views/hr_dashboard1_views.xml',
+        'views/hr_dashboard2_views.xml',
+        'views/hr_menu.xml',
+        'reports/report_employee.xml',
+        'reports/employee_report_template.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

@@ -1,0 +1,45 @@
+<odoo>
+    <template id="employee_report_template">
+        <t t-call="web.basic_layout">
+            <t t-name="hr_custom.employee_report_template">
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <header>
+                                <!-- Logo de l'entreprise telecharger depuis le web -->
+                                <div style="text-align: center;">
+                                     <img src="https://excoafrique.com/wp-content/uploads/2017/09/picto-exco.jpg" alt="Company Logo" style="max-height: 60px;"/>
+                                </div>
+                                
+                                <div style="text-align: center; margin-top: 10px;">
+                                    <h1>Rapport de l'Employé</h1>
+                                    <p style="font-size: 14px; color: #555;">
+                                        Ce rapport contient les informations relatives à l'employé, ses certifications et son score de performance.
+                                    </p>
+                                </div>
+                            </header>
+                            <hr/>
+                            <!-- Informations personnelles -->
+                            <h2>Informations personnelles</h2>
+                            <p><strong>Nom :</strong> <t t-esc="doc.name"/></p>
+                            <p><strong>Département :</strong> <t t-esc="doc.department_id.name or 'N/A'"/></p>
+                            <p><strong>Manager :</strong> <t t-esc="doc.parent_id.name or 'N/A'"/></p>
+                            <hr/>
+                            <!-- Certifications -->
+                            <h2>Certifications</h2>
+                            <ul>
+                                <t t-foreach="doc.certifications" t-as="certification">
+                                    <li><t t-esc="certification.name"/></li>
+                                </t>
+                            </ul>
+                            <hr/>
+                            <!-- Score de performance -->
+                            <h2>Score de performance</h2>
+                            <p><strong>Score :</strong> <t t-esc="doc.performance_score"/></p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

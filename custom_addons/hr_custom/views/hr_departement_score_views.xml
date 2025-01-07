@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <!-- Vue Kanban pour les scores par département -->
+        <record id="view_hr_department_score_kanban" model="ir.ui.view">
+            <field name="name">hr.department.kanban</field>
+            <field name="model">hr.department</field>
+            <field name="arch" type="xml">
+                <kanban string="Department Scores">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_details">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                    <div>
+                                        <span>Average Score: </span>
+                                        <field name="average_score" widget="float"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action pour afficher la vue -->
+        <record id="action_hr_department_score" model="ir.actions.act_window">
+            <field name="name">Department Scores</field>
+            <field name="res_model">hr.department</field>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_hr_department_score_kanban"/>
+        </record>
+    </data>
+</odoo>
