@@ -7,10 +7,7 @@ class HrEmployee(models.Model):
         [('beginner', 'Débutant'), ('intermediate', 'Intermédiaire'), ('expert', 'Expert')],
         string="Niveau d'expérience",
     )
-    certifications = fields.Many2many(
-        'hr.certification', 
-        string='Certifications',
-    )
+    certification_ids = fields.One2many('hr.certification.employee', 'employee_id', string='Certifications')
     performance_score = fields.Float(string='Score de performance')
 
     def action_export_employee_report(self):
