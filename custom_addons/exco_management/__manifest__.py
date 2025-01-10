@@ -8,14 +8,14 @@
     'depends': ['base','web'],
     'data': [
         'security/ir.model.access.csv',
-        'views/color_custom_views.xml',
+        'views/assets.xml',
+        'views/color_custom_views.xml',  
     ],
     'assets': {
         'web.assets_backend': [
-            'exco_management/static/src/scss/custom_theme.scss',
+            'exco_management/static/src/**/*',
         ],
     },
-    
     'installable': True,
     'application': True,
     

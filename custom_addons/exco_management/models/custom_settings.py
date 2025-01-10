@@ -1,5 +1,4 @@
-from odoo import models, fields
-import os
+from odoo import models, fields, http
 
 class AvailableColor(models.Model):
     _name = 'available.color'
@@ -14,36 +13,26 @@ class CustomTheme(models.Model):
     _description = 'Custom Theme'
 
     color_main_navbar_id = fields.Many2one('available.color', string="Couleur de la barre de navigation")
-    color_button_id = fields.Many2one('available.color', string="Couleur des boutons")
+    color_web_id = fields.Many2one('available.color', string="Couleur de la page")
 
     def apply_theme_colors(self):
         # Récupérer les couleurs sélectionnées
         navbar_color = self.color_main_navbar_id.color_code
-        button_color = self.color_button_id.color_code
+        web_color = self.color_web_id.color_code
 
-        # Générer le contenu SCSS
-        scss_content = f"""
-        :root {{
-            --color-main-navbar: var(--o-color-main-navbar, {navbar_color});
-        }}
-
+        # Générer le contenu CSS
+        css_content = f"""
         .o_main_navbar {{
-            background-color: var(--color-main-navbar);
+            background-color: {navbar_color};
+        }}
+        .o_web_client {{
+            background-color: {web_color};
         }}
         """
 
-        # Chemin du fichier SCSS
-        scss_dir = os.path.join(os.path.dirname(__file__), '..', 'static', 'src', 'scss')
-        scss_path = os.path.join(scss_dir, 'custom_theme.scss')
-
-        # Créer les répertoires s'ils n'existent pas
-        os.makedirs(scss_dir, exist_ok=True)
-        
-        # Écrire le contenu SCSS dans le fichier
-        with open(scss_path, 'w') as file:
-            file.write(scss_content)
-
+        # Retourner le CSS pour injection dynamique via JavaScript
         return {
             'type': 'ir.actions.client',
-            'tag': 'reload',
+            'tag': 'custom_theme_apply',
+            'params': {'css': css_content},
         }

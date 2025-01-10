@@ -41,13 +41,15 @@
             <field name="model">custom.theme</field>
             <field name="arch" type="xml">
                 <form string="Paramètres du thème personnalisé">
-                    <header>
-                        <button name="apply_theme_colors" type="object" class="oe_highlight">Apply Theme Colors</button>
-                    </header>
-                    <group>
-                        <field name="color_main_navbar_id"/>
-                        <field name="color_button_id"/>
-                    </group>
+                    <sheet>
+                        <header>
+                            <button string="Appliquer le thème" type="object" name="apply_theme_colors" class="oe_highlight"/>
+                        </header>
+                        <group>
+                            <field name="color_main_navbar_id"/>
+                            <field name="color_web_id"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
@@ -58,7 +60,7 @@
             <field name="arch" type="xml">
                 <list string="Paramètres du thème personnalisé">
                     <field name="color_main_navbar_id"/>
-                    <field name="color_button_id"/>
+                    <field name="color_web_id"/>
                 </list>
             </field>
         </record>
