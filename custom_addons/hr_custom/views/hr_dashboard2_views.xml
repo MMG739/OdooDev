@@ -12,7 +12,14 @@
             </field>
         </record>
 
-        
+        <!-- Action pour afficher le tableau de bord avec plusieurs vues -->
+        <record id="action_hr_dashboard_corrected_custom" model="ir.actions.act_window">
+            <field name="name">Effectif par Departement</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">graph</field> 
+            <field name="view_id" ref="view_hr_dashboard_pie_chart_custom"/> <!-- Vue par défaut -->
+        </record>
+
         <!-- Action pour la vue graphique circulaire -->
         <record id="action_hr_dashboard_pie_chart_custom_action" model="ir.actions.act_window.view">
             <field name="sequence" eval="10"/>
@@ -20,14 +27,9 @@
             <field name="view_id" ref="view_hr_dashboard_pie_chart_custom"/>
             <field name="act_window_id" ref="action_hr_dashboard_corrected_custom"/>
         </record>
-        
-        <record id="action_hr_dashboard_corrected_custom" model="ir.actions.act_window">
-            <field name="name">Effectif par Departement</field>
-            <field name="res_model">hr.employee</field>
-            <field name="view_mode">graph</field> 
-            <field name="view_id" ref="view_hr_dashboard_pie_chart_custom"/> 
-        </record>
 
+        
+        
 
     </data>
 </odoo>
