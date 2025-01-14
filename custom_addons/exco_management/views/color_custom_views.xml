@@ -19,6 +19,12 @@
             <field name="model">available.color</field>
             <field name="arch" type="xml">
                 <list string="Couleurs disponibles">
+                    <header>
+                        <button name="generate_excel_report"
+                                string="Generate Excel Report"
+                                type="object"
+                                class="btn-primary"/>
+                    </header>
                     <field name="name"/>
                     <field name="color_code"/>
                 </list>
@@ -48,6 +54,8 @@
                         <group>
                             <field name="color_main_navbar_id"/>
                             <field name="color_web_id"/>
+                            <field name="color_button_id"/>
+                            <field name="color_menu_id"/>
                         </group>
                     </sheet>
                 </form>
@@ -61,6 +69,8 @@
                 <list string="Paramètres du thème personnalisé">
                     <field name="color_main_navbar_id"/>
                     <field name="color_web_id"/>
+                    <field name="color_button_id"/>
+                    <field name="color_menu_id"/>
                 </list>
             </field>
         </record>
