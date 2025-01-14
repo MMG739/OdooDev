@@ -10,7 +10,6 @@
                     <field name="department_id"/>
                     <field name="experience_level"/>
                     <field name="performance_score"/>
-                    <field name="certifications" widget="many2many_tags"/>
                 </list>
             </field>
         </record>
@@ -27,9 +26,18 @@
                 <xpath expr="//sheet" position="inside">
                     <group string="Informations personnalisées">
                         <field name="experience_level"/>
-                        <field name="certifications" widget="many2many_tags"/>
                         <field name="performance_score"/>
                     </group>
+                    <notebook>
+                        <page string="Certifications">
+                            <field name="certification_ids">
+                                <list editable="bottom">
+                                    <field name="certification_id"/>
+                                    <field name="date_obtention"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </xpath>
             </field>
         </record>

@@ -1,5 +1,14 @@
 <odoo>
     <data>
+        <!-- Menu pour accéder aux certifications -->
+        <menuitem
+            id="menu_hr_certification"
+            name="Certifications"
+            parent="hr.menu_hr_root"
+            action="action_hr_certification"
+            />
+
+
         <!-- Menu pour acceder aux score et experiences des employees -->
         <menuitem
             id="menu_hr_employee"

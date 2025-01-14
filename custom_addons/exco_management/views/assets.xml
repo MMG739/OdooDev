@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <!-- Déclaration de l'inclusion du fichier JS dans les assets backend -->
+        <template id="assets_backend" name="Exco Management Assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/exco_management/static/src/js/custom_theme.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>
